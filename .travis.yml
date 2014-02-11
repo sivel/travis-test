@@ -1,18 +1,13 @@
-language: python
-
-python:
- - 2.7
-
+---
+language: c
 script:
  - curl -s http://www.python.org/ftp/python/2.4.6/Python-2.4.6.tar.bz2 | tar xj
  - cd Python-2.4.6
- - ./configure --prefix=$HOME/virtualenv/python2.4
- - make
- - make install
- - ls $HOME/virtualenv/python2.4
- - ls $HOME/virtualenv/python2.4/bin
- - ls $HOME/virtualenv/python2.4/bin/python -V
-
-notifications:
-  email:
-    - matt@sivel.net
+ - ./configure --prefix=$HOME/virtualenv/python2.4 > /dev/null 2>&1 && make > /dev/null 2>&1 && make install > /dev/null 2>&1
+ - $HOME/virtualenv/python2.4/bin/python -V
+---
+language: python
+python:
+ - 2.7
+script:
+ - python -V
