@@ -1,13 +1,11 @@
----
-language: c
-script:
- - curl -s http://www.python.org/ftp/python/2.4.6/Python-2.4.6.tar.bz2 | tar xj
- - cd Python-2.4.6
- - ./configure --prefix=$HOME/virtualenv/python2.4 > /dev/null 2>&1 && make > /dev/null 2>&1 && make install > /dev/null 2>&1
- - $HOME/virtualenv/python2.4/bin/python -V
----
 language: python
 python:
  - 2.7
+env:
+  global:
+    - secure: p3TkQCE4QmetNAPMaizY3s6sh7/rcMlSvsfd0i2iMmAEoslPHU/Qd7kEJbsAXbnMT3Ff/bmiv38XcGvaSzYab+4/lwOmqTiUu/RMy3JZuKT1LhBs7ik33Pc35O3MURBctX9RdsK72PIocaJcyqrs+avnjKqzL
+m4OEp7LJ2QezPI=
 script:
  - python -V
+ - python -c "import os; print os.getenv('FOO')"
+ - echo $FOO
