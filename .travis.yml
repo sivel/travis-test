@@ -5,8 +5,7 @@ python:
 
 env:
   global:
-    - secure: "p3TkQCE4QmetNAPMaizY3s6sh7/rcMlSvsfd0i2iMmAEoslPHU/Qd7kEJbsAXbnMT3Ff/bmiv38XcGvaSzYab+4/lwOmqTiUu/RMy3JZuKT1LhBs7ik33Pc35O3MURBctX9RdsK72PIocaJcyqrs+avnjKqzL
-m4OEp7LJ2QezPI="
+    - secure: "d+7KfxDSv5YX5EgBz+6Qcz7576yZeq8fep4r5CdSYNAlQDqowAV0YSHdsUea7ghOX2tffDdhQ7eHuULnp7q1QnydBf4tomYi+pS6Nx1bOBt/DMlEpx0OYeJLAOq+XQKpR2GKgZwWJAEv8l7Xo5RdTqfdrB4rWEO4N0WbSoN2uG0="
 
 script:
  - python -V
