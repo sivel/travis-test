@@ -4,10 +4,14 @@ python:
  - 2.7
 
 env:
-  global:
-    - secure: "Kb2Hxs5kfq3A924D4cvu6iPmeV3c7bRMrFqIIyXwtKlTtfsFnMSFCm6HrTgmSkrF/5lwWsIfKBTPismyoWYdEYijino6ZKqKITOCh7jDEhJkRb5t4E7M7BIk0yfXuqeELZhIScDPkOi+rYUBnm2IpWlq/WGWnt4bR7tF/t14oeU="
+ - TOXENV=py24
+ - TOXENV=py25
+ - TOXENV=py26
+ - TOXENV=py27
+ - TOXENV=py30
+ - TOXENV=py31
+ - TOXENV=py32
+ - TOXENV=py33
 
 script:
- - python -V
- - python -c "import os; print os.getenv('FOO')"
- - echo $FOO
+ - tox
