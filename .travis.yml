@@ -13,5 +13,8 @@ env:
  - TOXENV=py32
  - TOXENV=py33
 
+install:
+ - pip install tox
+
 script:
  - tox
