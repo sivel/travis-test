@@ -3,16 +3,13 @@ language: python
 matrix:
   include:
     - python: 2.7
-      env: PYBIN=/home/travis/virtualenv/python2.7.12/bin/python2.7
     - python: 3.5
-      env: PYBIN=/home/travis/virtualenv/python3.5.2/bin/python3.5
     - python: 3.6
-      env: PYBIN=/home/travis/virtualenv/python3.6.1/bin/python3.6
 
 install:
   - pip install ansible
 
 script:
   - head -1 $(which ansible)
-  - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python' -e ansible_python_interpreter=$PYBIN
-  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
+  - ansible all -i hosts -l localhost -m setup -a 'filter=ansible_python'
+  - ansible all -i hosts -l localhost -m uri -a url=https://sh.rustup.rs/
