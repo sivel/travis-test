@@ -7,6 +7,9 @@ python:
 
 script:
   - pip install ansible
+  - which python2.7
+  - which python3.5
+  - which python3.6
   - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python'
   - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
   - python -c 'import ssl; print([a for a in dir(ssl) if a.startswith("PROTOCOL_")])'
