@@ -9,7 +9,10 @@ matrix:
     - python: 3.6
       env: PYBIN=/home/travis/virtualenv/python3.6.1/bin/python3.6
 
-script:
+install:
   - pip install ansible
+
+script:
+  - head -1 $(which ansible)
   - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python' -e ansible_python_interpreter=$PYBIN
   - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
