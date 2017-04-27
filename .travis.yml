@@ -1,7 +1,9 @@
 language: python
 
 python:
- - 2.7
+  - 2.7
+  - 3.5
+  - 3.6
 
 script:
   - pip install ansible
@@ -9,6 +11,7 @@ script:
   - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
   - python -c 'import ssl; print([a for a in dir(ssl) if a.startswith("PROTOCOL_")])'
   - python certs.py
-  - apt-get update
-  - apt-get install ca-certificates
-  - update-ca-certificates
+  - sudo apt-get update
+  - sudo apt-get install ca-certificates
+  - sudo update-ca-certificates
+  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
