@@ -11,16 +11,5 @@ matrix:
 
 script:
   - pip install ansible
-  - which python2.7
-  - which python3.5
-  - which python3.6
   - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python' -e ansible_python_interpreter=$PYBIN
-  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
-  - python -c 'import ssl; print([a for a in dir(ssl) if a.startswith("PROTOCOL_")])'
-  - python certs.py
-  - sudo apt-get update
-  - sudo apt-get install ca-certificates
-  - sudo update-ca-certificates
-  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
-  - pip install urllib3 pyopenssl cryptography idna
   - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
