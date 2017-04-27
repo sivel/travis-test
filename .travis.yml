@@ -11,5 +11,5 @@ install:
 
 script:
   - head -1 $(which ansible)
-  - ansible all -i hosts -l localhost -m setup -a 'filter=ansible_python'
-  - ansible all -i hosts -l localhost -m uri -a url=https://sh.rustup.rs/
+  - ansible all -i localhost, -m setup -a 'filter=ansible_python'
+  - ansible all -i localhost, -m uri -a url=https://sh.rustup.rs/
