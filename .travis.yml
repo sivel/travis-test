@@ -3,13 +3,12 @@ language: python
 python:
  - 2.7
 
-matrix:
-  include:
-    - env: GOOS=linux GOARCH=amd64
-    - env: GOOS=windows GOARCH=amd64
-    - env: GOOS=darwin GOARCH=amd64
-
 script:
-  - go version
-  - wget https://github.com/sivel/ansible/raw/ea1af4c5b4c17a349c004ca5a3dad8eb1cecf3e1/test/integration/library/helloworld.go
-  - go build -o helloworld_$GOOS helloworld.go
+  - pip install ansible
+  - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python'
+  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
+  - python -c 'import ssl; print([a for a in dir(ssl) if a.startswith("PROTOCOL_")])'
+  - python certs.py
+  - apt-get update
+  - apt-get install ca-certificates
+  - update-ca-certificates
