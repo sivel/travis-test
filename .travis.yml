@@ -1,22 +1,26 @@
 language: python
 
-python:
-  - 2.7
-  - 3.5
-  - 3.6
+matrix:
+  include:
+    - python: 2.7
+      env: PYBIN=/home/travis/virtualenv/python2.7.12/bin/python2.7
+    - python: 3.5
+      env: PYBIN=/home/travis/virtualenv/python3.5.2/bin/python3.5
+    - python: 3.6
+      env: PYBIN=/home/travis/virtualenv/python3.6.1/bin/python3.6
 
 script:
   - pip install ansible
   - which python2.7
   - which python3.5
   - which python3.6
-  - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python'
-  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
+  - ansible all -i localhost, -c local -m setup -a 'filter=ansible_python' -e ansible_python_interpreter=$PYBIN
+  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
   - python -c 'import ssl; print([a for a in dir(ssl) if a.startswith("PROTOCOL_")])'
   - python certs.py
   - sudo apt-get update
   - sudo apt-get install ca-certificates
   - sudo update-ca-certificates
-  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
+  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
   - pip install urllib3 pyopenssl cryptography idna
-  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
+  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/ -e ansible_python_interpreter=$PYBIN
