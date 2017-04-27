@@ -15,3 +15,5 @@ script:
   - sudo apt-get install ca-certificates
   - sudo update-ca-certificates
   - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
+  - pip install urllib3 pyopenssl cryptography idna
+  - ansible all -i localhost, -c local -m uri -a url=https://sh.rustup.rs/
